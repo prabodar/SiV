@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>Friends</th>
+  </tr>
+   <% @friend.each do |friend| %> 
+  <tr>
+    <td>
+        <%= friend.name %>
+    </td>
+  </tr>
+   <% end %>  
+</table>

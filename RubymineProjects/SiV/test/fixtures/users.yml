@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: Sakares
+  email: jobbeins@gmail.com
+  school: TSP
+  location: Evry
+
+two:
+  name: Ronaldo
+  email: ronaldo.spain@gmail.com
+  school: TEM
+  location: Madrid

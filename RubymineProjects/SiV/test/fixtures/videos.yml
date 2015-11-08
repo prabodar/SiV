@@ -1,0 +1,9 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: untitled 
+  uid: 790609176 
+  link: <iframe src=\"https://www.facebook.com/video/embed?video_id=10151996149384177\" width=\"640\" height=\"640\" frameborder=\"0\"></iframe>
+  inLocal: false
+  user_id: 980190962

@@ -1,0 +1,2 @@
+module LocalvdosHelper
+end

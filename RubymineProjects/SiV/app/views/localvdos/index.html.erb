@@ -1,0 +1,27 @@
+<h1>Listing Uploaded Videos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th bgcolor="#CDE2FA">User</th>
+      <th bgcolor="#CDE2FA">Video</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @localvdos.each do |localvdo| %>
+      <tr>
+        <td valign="middle" align="center" bgcolor="#E0E0E0"><%= User.find(localvdo.user_id).name %></td>
+      
+        <td valign="middle" align="center" ><%= video_tag localvdo.video.url, :size => "100x100" %></td>
+        <td><%= link_to 'Show', localvdo %></td>
+        <% if localvdo.user_id == session[:user_id] %>
+          <td><%= link_to 'Edit', edit_localvdo_path(localvdo) %></td>
+          <td><%= link_to 'Destroy', localvdo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -1,0 +1,41 @@
+#!/bin/bash
+CURL="/usr/bin/curl"
+GAWK="/usr/bin/awk"
+#echo -n "Please pass the url you want to measure: "
+
+URLRemote="$1"
+Rresult=`$CURL -o /dev/null -s -w %{time_connect}:%{time_starttransfer}:%{time_total}:%{size_download}:%{speed_download}:%{url_effective}:%{remote_ip}:%{local_ip} $URLRemote`
+echo " Time_Connect Time_startTransfer Time_total size_download speed_download url_effective remote_ip local_ip"
+echo $Rresult
+
+IFS=:
+set $Rresult
+Rtime_Connect=$1
+Rtime_startTransfer=$2
+Rtime_total=$3
+Rsize_download=$4
+Rspeed_download=$5
+Rurl_effective=$6
+Rremote_ip=$7
+Rlocal_ip=$8
+
+echo $Rtime_Connect
+echo $Rtime_startTransfer
+
+URLLocal="$2"
+Lresult=`$CURL -o /dev/null -s -w %{time_connect}:%{time_starttransfer}:%{time_total}:%{size_download}:%{speed_download}:%{url_effective}:%{remote_ip}:%{local_ip} $URLLocal`
+echo " Time_Connect Time_startTransfer Time_total size_download speed_download url_effective remote_ip local_ip"
+echo $URLLocal
+
+IFS=:
+set $Lresult
+Ltime_Connect=$1
+Ltime_startTransfer=$2
+Ltime_total=$3
+Lsize_download=$4
+Lspeed_download=$5
+Lurl_effective=$6
+Lremote_ip=$7
+Llocal_ip=$8
+
+

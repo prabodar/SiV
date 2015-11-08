@@ -1,0 +1,39 @@
+// Place all the styles related to the Videos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#box {
+/*   line-height:30px; */
+   width:500px; height:400px; 
+  background-color:white; 
+  margin-left:300px ; 
+  margin-right:300px; 
+  padding-left:50px; 
+  padding-right:50px;
+ 
+}
+#boxforfb {
+/*   line-height:30px; */
+   width:500px; height:450px; 
+  background-color:white; 
+  margin-left:300px ; 
+  margin-right:300px; 
+  padding-left:50px; 
+  padding-right:50px;
+ 
+}
+
+#infobox {
+   padding-top: 10px; padding-bottom:5px;
+}
+ 
+
+#footer {
+  line-height:30px;
+    background-color:#E0E0E0;
+    color:green;
+    clear:both;
+    text-align:center;
+   
+}

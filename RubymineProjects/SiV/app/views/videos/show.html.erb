@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @video.name %>
+</p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @video.uid %>
+</p>
+
+<p>
+  <strong>Same Network?:</strong>
+  <%= @same_network %>
+</p>
+<p>
+  <strong>session id:</strong>
+  <%= @sessionId %>
+</p>
+
+<strong>Decision:</strong>
+<% if @same_network %>
+<% if @video.local_link.length > 0 %>
+<p>
+  <strong><font color="blue">Choose to stream Local Video.</font></strong>
+  <strong>Local Link:</strong>
+  <iframe src="<%= url_for @video.local_link %>" width="100%" height="640px" scrolling="yes"></iframe>
+  <%= @video.local_link %>
+</p>
+<% else %>
+<p>
+  <strong><font color="blue">No Local Video exist then stream from Facebook.</font></strong>
+  <strong>Facebook Link:</strong>
+  <%= @video.link.html_safe %>
+</p>
+<% end %>
+<% else %>
+<p>
+  <strong><font color="blue">Choose to stream from Facebook CDN.</font></strong>
+  <strong>Facebook Link:</strong>
+  <%= @video.link.html_safe %>
+</p>
+<% end %>
+
+<% if not @video.inLocal %>
+  <strong><font color="red">No Local Video, please update by clicking Edit!</font></strong>
+<% end %>
+
+
+<% if @video.user_id  == session[:user_id] %>
+  <%= link_to 'Edit', edit_video_path(@video) %> |
+<% end %>
+<%= link_to 'Back', videos_path %>

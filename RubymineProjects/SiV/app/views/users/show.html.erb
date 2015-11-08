@@ -1,0 +1,106 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>ID:</strong>
+  <%= @user.id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @user.location %>
+</p>
+
+<% if admin_signed_in? or @user.id == session[:user_id]%>
+
+<p>
+  <strong>Facebook ID:</strong>
+  <%= @user.uid %>
+</p>
+
+<p>
+  <strong>IP Address:</strong>
+  <%= @user.ip_address %>
+</p>
+
+<% end %>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @user.created_at %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @user.updated_at %>
+</p>
+
+<% if @user.id == session[:user_id] %>
+<%= link_to 'Upload Video', new_localvdo_path %> <br/>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<% end %>
+<%= link_to 'Back', users_path %>
+
+<h1><%= @user.name %> Local Videos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th bgcolor="#CDE2FA">Name</th>
+      <th bgcolor="#CDE2FA">Video</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @localvdos.each do |localvdo| %>
+      <tr>
+        <td valign="middle" align="center" bgcolor="#E0E0E0"><%= localvdo.video.original_filename %></td>
+        <td valign="middle" align="center" bgcolor="#E0E0E0"><%= video_tag localvdo.video.url, :size => "100x100" %></td>
+        <td><%= link_to 'Show', localvdo %></td>
+        <% if localvdo.user_id == session[:user_id] %>
+          <td><%= link_to 'Edit', edit_localvdo_path(localvdo) %></td>
+          <td><%= link_to 'Destroy', localvdo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1><%= @user.name %> Facebook Videos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th bgcolor="#CDE2FA">Name</th>
+      <th bgcolor="#CDE2FA">Thumbnail</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @facebook_vdos.each do |facebook_vdo| %>
+      <tr>
+        <td bgcolor="#E0E0E0"><%= facebook_vdo.name %></td> 
+        <td bgcolor="#E0E0E0"><%= image_tag facebook_vdo.thumbnail_link %></td>
+        <td><%= link_to 'Show', facebook_vdo %></td>
+        <% if facebook_vdo.user_id == session[:user_id] %>
+          <td><%= link_to 'Edit', edit_video_path(facebook_vdo) %></td>
+          <td><%= link_to 'Destroy', facebook_vdo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if facebook_vdo.inLocal %>
+            <td align="center"><strong><font color="blue">Linked with Local Video!</font></strong></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

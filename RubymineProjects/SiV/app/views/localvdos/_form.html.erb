@@ -1,0 +1,22 @@
+<%= form_for @localvdo, :html => { :multipart => true } do |f| %>
+  <% if @localvdo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@localvdo.errors.count, "error") %> prohibited this localvdo from being saved:</h2>
+
+      <ul>
+      <% @localvdo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :video, "Video" %>
+    <%= f.file_field :video %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

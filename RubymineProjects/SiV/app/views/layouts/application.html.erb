@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--   <title>EcousinTspFb</title> -->
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+  <script type='text/javascript'>
+    (function (w) {
+      w.MobileMonetizer = {ID: '580', type: 'DETAIL', category: '0', display: 'DELAY', delay: 15000};
+      if (navigator.userAgent.match(/iPhone|iPod|iPad|Android/i) == null)return;
+      var d = document, h = d.getElementsByTagName('head')[0], s = d.createElement('style'), j = d.createElement('script');
+      s.setAttribute('rel', 'mw-page-block');
+      s.innerHTML = 'body * {display:none}';
+      j.setAttribute('src', '//www.adsoptimal.com/advertisement/dispatcher.js');
+      j.onerror = function () {
+        h.removeChild(s);
+        h.removeChild(j);
+      };
+      h.appendChild(s);
+      h.appendChild(j);
+    })(window);
+  </script>
+</head>
+
+<body style="background-color:#E0E0E0;">
+
+
+<!-- <div style="background-color:#222222; padding-top:20px; padding-bottom:20px; "> -->
+
+<% if !current_user %>
+    <div id="userNav">
+      <% if admin_signed_in? %>
+          <strong style="color:red;">ADMIN</strong>
+          <%= link_to "Sign out", destroy_admin_session_path, method: :delete, :class => "leftNav", style: 'color:white;' %>
+          <%= link_to "Listing users", users_path, :class => "leftNav", method: :get, style: 'color:white;' %>
+          <%= link_to "Listing videos", videos_path, :class => "leftNav", method: :get, style: 'color:white;' %>
+      <% else %>
+          <%= link_to "Admin Sign in", new_admin_session_path, :class => "leftNav", style: 'color:white;' %>
+          <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", :class => "leftNav", method: :get, style: 'color:white;' %>
+
+      <% end %>
+      <!--     <%= link_to "Sign out", destroy_admin_session_path, method: :delete, :class => "leftNav", style: 'color:white;' %> -->
+    </div>
+<% else %>
+
+
+    <div id="userNav">
+      <!-- Normal user -->
+
+      <!--   <div id="leftNave" style="color:white;">  -->
+      <!--     Welcome <strong><%= current_user.name %></strong></div> -->
+      <%= link_to "Home", videos_path, :class => "leftNav", method: :get, style: 'color:white;' %>
+      <%= link_to "My Account", current_user, :class => "leftNav", method: :get, style: 'color:whitw;' %>
+      <%= link_to "Fetch User Uploaded Video", fetch_path, :class => "leftNav", method: :get, style: 'color:white;' %>
+      <%= link_to "Fetch Shared Video", timelinevdo_path, :class => "leftNav", method: :get, style: 'color:white;' %>
+      <%= link_to "Listing All videos", videos_path, :class => "leftNav", method: :get, style: 'color:white;' %>
+      <%= link_to "Sign out", signout_path, :class => "leftNav", method: :get, style: 'color:white;' %>
+
+
+      <strong style="color:white;">
+        current Client IP Address =
+        <%= session[:user_ip] %>
+      </strong>
+<% end %>
+
+<!--           <div id="function"> -->
+
+
+<!--           </div> -->
+
+
+</div>
+<%= yield %>
+
+</body>
+
+</html>
+

@@ -1,0 +1,33 @@
+<h1>Youtube Videos From Timeline Saved to Storage</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th bgcolor="#CDE2FA">Video</th>
+    </tr>
+  </thead>
+
+  <tbody>
+<!--     <%= video_tag "Video/The\ Weeknd\ \"Earned\ It\"\ \(Fifty\ Shades\ Of\ Grey\)\ Official\ Lyric\ Video.mp4", :size => "500x300", :controls => true %> -->
+<!--    <video width="320" height="240" controls="controls">
+  <source src="Video/week.mp4" type="video/mp4"> Your browser does not support the video tag.
+</video> -->
+ 
+
+    <% @contents.each do |youtube_vdo| %>
+      <tr>
+        <td bgcolor="#E0E0E0">
+          <p hidden><%= youtube_vdo + 'width="500px" height="300px" frameborder="0"></iframe>' %></p>
+
+
+          <%= youtube_vdo.html_safe %></td>
+<!--         <a href="<%= url_for :action => :downloadvdo, :vdo=> youtube_vdo %>"> Save it</a>  -->
+       
+<!--         <%= link_to "Save it", {:controller => "videos", :action => "downloadvdo"}%> -->
+     
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

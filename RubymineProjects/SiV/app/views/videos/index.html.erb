@@ -1,0 +1,115 @@
+<% if current_user %>
+    <div style="height:70px;"></div>
+    <!-- <p align="center">Sorry You need to log in with Facebook!</p> -->
+    <!-- <iframe width="320" height="240" src="http://157.159.42.98/videos/video.mp4"></iframe> -->
+    <!-- <iframe width="320" height="240" src="http://157.159.42.98/videos/Wildlife.wmv"></iframe>
+     -->
+
+
+
+    <!-- <div> <iframe width="320" height="240" src="http://203.159.41.100/Videos/luminaid.mp4"></iframe> </div> -->
+    <!--  <div> <iframe width="320" height="240" src="http://203.159.41.100/Videos/luminaid.mp4"></iframe> </div> -->
+
+    <% @local_videos.each do |video| %>
+
+        <% @uploader = User.find(video.user_id) %>
+        <!-- && @frilist.include?(@uploader.uid) -->
+        <% if current_user.city == @uploader.city %>
+            <div id="box">
+              <div id="infobox">
+                <img src="http://images.clipartpanda.com/user-clipart-bcyogLKcL.png" alt="Mountain View" style="width:50px;height:50px"> <%= link_to @uploader.name, @uploader %>
+                <div>
+                  <font color="blue" size="3"> Playing from local server.
+                    <span style="float:right;"> <%= video.created_at.strftime("%d %b. %Y") %> </span> </font></div>
+
+              </div>
+              <div style="padding-top:10px;">
+
+              </div>
+
+              <video controls style="width:500px; height:250px; padding-top:10px;">
+
+                <%=
+                    puts "calling shell script"
+                    system ("bash /home/praboda/RubymineProjects/SiV/app/assets/Shell/curlchk '#{video.url}' http://localhost:3000/assets/Video/'#{video.video_file_name}'")
+                %>
+                <source src="/assets/Video/<%= video.video_file_name %>">
+              </video>
+
+
+
+            </div>
+
+
+        <% else %>
+            <div id="box">
+              <div id="infobox">
+                <img src="http://images.clipartpanda.com/user-clipart-bcyogLKcL.png" alt="Mountain View" style="width:50px;height:50px;background-color:white;padding-right:10px;">
+                <%= link_to @uploader.name, @uploader %>
+                <div>
+                  <font color="blue" size="3"> Playing from original links.
+                    <span style="float:right;"> <%= video.created_at.strftime("%d %b. %Y") %> </span> </font></div>
+
+              </div>
+              <div style="padding-top:10px;">
+                <iframe title="YouTube video player" width="500px" height="250px" src="<%= video.url %>" frameborder="0" allowfullscreen controls></iframe>
+              </div>
+            </div><br>
+
+        <% end %>
+
+    <% end %>
+
+    <% @videos.each do |video| %>
+
+        <% @uploader = User.find(video.user_id) %>
+        <% puts video.name %>
+        <!-- || @frilist.include?(video.uid) -->
+        <% if current_user.uid==video.uid %>
+
+
+            <div id="boxforfb">
+              <div id="infobox">
+
+                <img src="http://images.clipartpanda.com/user-clipart-bcyogLKcL.png" alt="Mountain View" style="width:50px;height:50px">  <%= link_to @uploader.name, @uploader %>
+                <div>
+                  <font color="blue" size="3"> Facebook uploaded video.
+                    <span style="float:right;"> <%= video.created_at.strftime("%d %b. %Y") %> </span> </font></div>
+              </div>
+              <div style="width:500px; height:250px; padding-top:10px;">
+                <p hidden><%= v=video.link.sub(/#{'" '}.+/, '" ') + 'width="500px" height="300px" frameborder="0"></iframe>' %></p>
+
+                <%= v.html_safe %>
+              </div>
+
+            </div>
+            <br>
+
+        <% end %>
+    <% end %>
+<% else %>
+
+    <head>
+      <style>
+        p {
+          display: block;
+          margin-top: 200px;
+
+          margin-bottom: 1em;
+          margin-left: 10px;
+          margin-right: 0;
+          color: red;
+        }
+      </style>
+    </head>
+    <body>
+
+    <p align="center">Sorry You need to log in with Facebook!</p>
+
+
+    </body>
+
+<% end %>      
+ 
+
+

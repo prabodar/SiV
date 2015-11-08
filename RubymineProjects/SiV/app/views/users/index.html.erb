@@ -1,0 +1,43 @@
+<div style="background-color:#222222; ">
+<h1>The admin has logged in.</h1>
+
+<h1>Listing users</h1>
+
+<table cellpadding="5">
+  <thead>
+    <tr>
+      <th bgcolor="#CDE2FA">Name</th>
+      <th bgcolor="#CDE2FA">Email</th>
+      <th bgcolor="#CDE2FA">Location</th>
+      <% if admin_signed_in? %>
+        <th bgcolor="#CDE2FA">Facebook ID </th>
+        <th bgcolor="#CDE2FA">IP Address</th>
+        <th bgcolor="#CDE2FA">Last connection Log</th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td align="center" bgcolor="#E0E0E0"><%= user.name %></td>
+        <td align="center" ><%= user.email %></td>
+        <td align="center" bgcolor="#E0E0E0"><%= user.location %></td>
+        <td align="center" bgcolor="#E0E0E0"><%= user.ip_address %></td>
+        <% if admin_signed_in? %>
+          <td align="center" ><%= user.uid %></td>
+          <td align="center" bgcolor="#E0E0E0"><%= user.ip_address %></td>
+          <td align="center" ><%= link_to 'Show log', "/users/#{user.id}.json" %></td>
+        <% end %>
+        <td align="center" bgcolor="#E0E0E0"><%= link_to 'Show', user %></td>
+        <% if user.id == session[:user_id] %>
+          <td align="center" ><%= link_to 'Edit', edit_user_path(user) %></td>
+          <td align="center" ><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+</div>
