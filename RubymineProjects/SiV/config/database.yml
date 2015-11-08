@@ -20,7 +20,7 @@ development:
   database: ecousin-tsp-fb
   pool: 5
   username: praboda
-  password: 
+  password: abc123
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -49,12 +49,12 @@ test:
   database: ecousin-tsp-fb_test
   pool: 5
   username: praboda
-  password:
+  password: abc123
 
-#production:
-#  adapter: postgresql
-#  encoding: unicode
-#  database: ecousin-tsp-fb_production
-#  pool: 5
-#  username: ecousin-tsp-fb
-#  password:
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: ecousin-tsp-fb_production
+  pool: 5
+  username: praboda
+  password: abc123
