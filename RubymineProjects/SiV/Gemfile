@@ -6,7 +6,7 @@ gem 'rails', '4.0.3'
 #Nokogiri to read url
 gem 'nokogiri'
 
-
+ruby '2.0.0'
 
 #Gem to download youtubes
 gem 'youtube_dl'
