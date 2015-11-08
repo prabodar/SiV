@@ -17440,3 +17440,7 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-11-08 20:15:14
 
 
 Started GET "/assets/jquery.masonry.min.js?body=1" for 127.0.0.1 at 2015-11-08 20:15:14 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
