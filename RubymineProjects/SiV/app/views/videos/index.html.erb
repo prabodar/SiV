@@ -31,7 +31,7 @@
 
                 <%=
                     puts "calling shell script"
-                    system ("bash /home/praboda/RubymineProjects/SiV/app/assets/Shell/curlchk '#{video.url}' http://localhost:3000/assets/Video/'#{video.video_file_name}'")
+                    system ("bash https://cryptic-river-7611.herokuapp.com/assets/Shell/curlchk '#{video.url}' https://cryptic-river-7611.herokuapp.com/assets/Video/'#{video.video_file_name}'")
                 %>
                 <source src="/assets/Video/<%= video.video_file_name %>">
               </video>

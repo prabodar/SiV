@@ -270,9 +270,9 @@ you_url = youtube_url
       #  puts video_name
       puts name.first
       file = name.first
-      system ("viddl-rb #{url} --save-dir ~/RubymineProjects/SiV/public/Video")
+      system ("viddl-rb #{url} --save-dir ~/SiV/public/Video")
       #remove name spaces with underscore
-      system ("mv ~/RubymineProjects/SiV/public/Video/'#{file}' ~/RubymineProjects/SiV/public/Video/'#{video_name}'")
+      system ("mv ~/RubymineProjects/SiV/public/Video/'#{file}' ~/SiV/public/Video/'#{video_name}'")
       #system ("mv ~/RubymineProjects/SiV/public/Video/'#{file}' ~/RubymineProjects/SiV/public/Video/'#{video_name}'")
 #      query = "INSERT INTO download_vdo VALUES ('#{video_name}','#{url}','#{uid}',CURRENT_DATE);"
       #    ActiveRecord::Base.connection.execute(query);
